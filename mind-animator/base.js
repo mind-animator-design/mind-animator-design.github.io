@@ -1,8 +1,4 @@
-var _yt_player={};(function(g){var window=this;/*
-
- Copyright The Closure Library Authors.
- SPDX-License-Identifier: Apache-2.0
-*/
+var _yt_player={};(function(g){var window=this;
 'use strict';var aa,baa,caa,fa,daa,eaa,ha,ia,la,ma,oa,iaa,jaa,xa,ya,kaa,laa,maa,Ba,Ca,Da,Ea,La,Na,oaa,paa,Ya,Za,bb,qaa,cb,raa,vaa,eb,waa,gb,jb,lb,ub,vb,wb,xb,zb,Ab,Eaa,Bb,Fb,Cb,Faa,Gaa,Haa,Gb,Ib,Iaa,Jb,Lb,Ob,Jaa,Kaa,Laa,Rb,Naa,Oaa,ec,Paa,lc,Qaa,Raa,jc,Saa,Taa,Uaa,vc,wc,Vaa,Waa,bba,Ec,aba,Zaa,Ic,Jc,Nc,Oc,Sc,Uc,Tc,Xc,eba,Yc,fba,Zc,$c,ad,gba,dd,hba,ed,fd,iba,gd,jba,kba,hd,jd,lba,mba,kd,nba,pba,oba,ld,nd,pd,rd,sba,rba,sd,ud,tba,vd,wd,yd,Bd,vba,Cd,F,Dd,Ed,Fd,Jd,Kd,Md,Pd,Rd,$d,wba,ae,xba,be,yba,ce,Aba,
 zba,ge,Dba,Fba,te,Hba,Iba,ue,Kba,Lba,Nba,ze,Oba,Ae,Pba,Qba,Fe,Rba,Sba,Tba,Uba,Ie,Xba,Yba,$ba,aca,bca,cca,dca,Vba,Wba,fca,gca,hca,ica,Oe,jca,kca,lca,mca,Ke,Zba,eca,pca,qca,rca,We,Xe,sca,Ye,Ze,$e,uca,tca,vca,wca,lf,mf,zca,nf,qf,Aca,Bca,tf,Bf,Cca,Fca,Jf,Lf,Gca,Hca,Mf,Mca,Rf,Jca,Lca,Pf,Of,Vf,Wf,Nca,Xf,Oca,$f,ag,Pca,cg,dg,eg,gg,Tca,hg,Vca,Yca,kg,bda,og,pg,dda,eda,cda,jda,kda,vg,lda,nda,oda,xg,pda,Ag,Bg,tda,Fg,Hg,Sg,Ug,Xg,Yg,uda,vda,wda,xda,ah,zda,fh,Bda,Dda,Cda,gh,lh,Eda,hh,Fda,$g,uh,Hda,wh,vh,Zg,yh,Ida,
 Jda,zh,Ah,Kda,Mda,Oda,Gh,Ih,Jh,Sda,Lh,Tda,Kh,Xda,Eh,Qda,Zda,Wda,Uda,Vda,$da,Yda,Mh,Qh,bea,cea,dea,eea,fea,gea,kea,mea,nea,pea,oea,qea,Yh,Zh,$h,sea,tea,ai,bi,vea,ei,wea,zea,gi,hi,Aea,li,mi,Cea,Dea,ri,Eea,Fea,si,ti,Gea,vi,xi,Hea,yi,zi,Kea,Lea,Nea,Oea,Qea,Pea,Rea,Bi,Sea,Ei,Ii,Ji,Ki,Li,Yea,$ea,afa,Ni,cfa,dfa,efa,gfa,ffa,hfa,bfa,Mi,jfa,Oi,kfa,lfa,Pi,mfa,Qi,Ri,Si,Ti,Ui,nfa,ofa,pfa,qfa,Vi,rfa,sfa,Wi,Yi,tfa,ufa,Zi,xfa,yfa,Afa,$i,dj,Cfa,Dfa,fj,Efa,Gfa,Ffa,Hfa,Ifa,Jfa,gj,hj,ij,Kfa,Lfa,Nfa,Ofa,kj,lj,mj,nj,Pfa,
