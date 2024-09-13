@@ -1,0 +1,253 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Animate Your Thoughts</title>
+<link href="./mind-animator/style.css" rel="stylesheet">
+<script type="text/javascript" src="./mind-animator/jquery.mlens-1.0.min.js"></script> 
+<script type="text/javascript" src="./mind-animator/jquery.js"></script>
+</head>
+
+<body>
+<div class="content">
+  <h1><strong>Animate Your Thoughts: Decoupled Reconstruction ofDynamic Natural Vision from Slow Brain Activity</strong></h1>
+  <div class="teaser-gif">
+    <div class="row-label" data-label="Ground truth"></div>
+    <img src="./mind-animator/gif/1-1.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/1-2.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/1-3.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/1-4.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/1-5.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/1-6.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/1-7.gif" class="teaser-gif-item" >
+
+    <div class="row-label" data-label="Reconstructed results"></div>
+    <img src="./mind-animator/gif/2-1.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/2-2.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/2-3.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/2-4.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/2-5.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/2-6.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/2-7.gif" class="teaser-gif-item" >
+    
+    <div class="row-label" data-label="Ground truth"></div>
+    <img src="./mind-animator/gif/3-1.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/3-2.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/3-3.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/3-4.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/3-5.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/3-6.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/3-7.gif" class="teaser-gif-item" >
+    
+    <div class="row-label" data-label="Reconstructed results"></div>
+    <img src="./mind-animator/gif/4-1.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/4-2.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/4-3.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/4-4.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/4-5.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/4-6.gif" class="teaser-gif-item" >
+    <img src="./mind-animator/gif/4-7.gif" class="teaser-gif-item" >
+  </div>
+</div>
+<div class="content">
+  <h2 style="text-align:center;">Abstract</h2>
+  <p> Reconstructing human dynamic vision from brain activity is a challenging task with great scientific significance.  Although prior video reconstruction methods have made substantial progress, they still suffer from several limitations, including: (1) difficulty in simultaneously reconciling semantic (e.g. categorical descriptions), structure (e.g. size and color), and consistent motion information (e.g. order of frames); (2) low temporal resolution of fMRI, which poses a challenge in decoding multiple frames of video dynamics from a single fMRI frame; (3) reliance on video generation models, which introduces ambiguity regarding whether the dynamics observed in the reconstructed videos are genuinely derived from fMRI data or are artifacts introduced by the model's exposure to external video data during training. To overcome these limitations,  we propose a two-stage model named Mind-Animator. During the fMRI-to-feature stage, we decouple semantic, structure, and motion features from fMRI. Specifically, we employ fMRI-vision-language tri-modal contrastive learning to decode semantic feature from fMRI and design a sparse causal attention mechanism for decoding multi-frame video motion features through a next-frame-prediction task. In the feature-to-video stage, these features are integrated into videos using an inflated Stable Diffusion, effectively eliminating external video data interference.  Extensive experiments on multiple video-fMRI datasets demonstrate that our model achieves state-of-the-art performance. Comprehensive experimental analyses further elucidate the interpretability of our model from a neurobiological perspective.</p>
+</div>
+<div class="content">
+  <h2 style="text-align:center;">Motivations</h2>
+  <img class="summary-img" src="./mind-animator/p1.png" style="width:100%;"> <br>
+  <p> When subjects view static images, the primary visual cortex first processes low-level structural information, such as location, shape, size, and color. Subsequently, in the higher visual cortex, the interpretation of category and description leads to high-level semantic understanding. Based on these findings in neuroscience, previous studies have attempted to reconstruct images by disentangling semantic and structural information. Naturally, when reconstructing dynamic video stimuli, in addition to these two features, it is also crucial to consider how motion information can be decoded from brain responses. </p>
+  <br>
+
+</div>
+<div class="content">
+  <h2 style="text-align:center;">Related works</h2>
+  <img class="summary-img" src="./mind-animator/p2.png" style="width:100%;"> <br>
+  <p> As depicted in Figure (a), early works by Han, Wen, Wang, and others mapped brain responses to the feature spaces of deep neural networks (DNNs) for end-to-end video reconstruction. To address the scarcity of paired video-fMRI data, Kupershmidt further advanced this approach by leveraging self-supervised learning to incorporate a large volume of unpaired video data. Although these studies demonstrated the feasibility of reconstructing videos from fMRI signals, the results notably <strong>lacked explicit semantic content.</strong>  </p>
+  <br>
+  <p>As shown in Figure (b), with advancements in multimodal and generative models, Chen, Sun, et al. used contrastive learning to map fMRI signals to the CLIP latent space for semantic decoding, followed by input into a video generation model for reconstruction. This approach produces semantically coherent and smooth videos, but it remains <strong> whether the motion information in the reconstructions originates from the fMRI or from the external video data used to train the video generation model. </strong> </p>
+  <br>
+  <p>To address the above issue, we propose Mind-Animator. By independently decoding semantic, structural, and motion information from fMRI signals and inputting them into an <strong>inflated image generation model</strong>, we ensure that the motion in the reconstructed videos originates solely from the fMRI data.   </p>
+  <img class="summary-img" src="./mind-animator/p5.gif" style="width:100%;">
+  <p>Notably, our method, which decodes semantic, structural, and motion information separately, produces reconstructions more closely aligned with the original video's <strong>appearance and motion trajectory</strong> (e.g., a forward-extending road). However, as shown in the red box, the use of an image generation model alone introduces 'jumpiness' between frames, resulting in lower inter-frame similarity and reduced smoothness compared to video generation models.  </p>
+  <br>
+  <p>Therefore, video generation models were only used in the video demonstrations on the project homepage to enhance smoothness. In all other contexts (e.g., quantitative analysis, ablation studies, interpretability analysis), unless otherwise specified, only image generation models were employed.  </p>
+</div>
+<div class="content">
+  <h2 style="text-align:center;">Methodology</h2>
+<img class="summary-img" src="./mind-animator/P6.png" style="width:100%;">
+<img class="summary-img" src="./mind-animator/P7.png" style="width:100%;">
+</div>
+<div class="content">
+  <h2 style="text-align:center;">Reconstruction Results</h2>
+  <img class="summary-img" src="./mind-animator/P8.png" style="width:100%;">
+  <img class="summary-img" src="./mind-animator/P9.png" style="width:100%;">
+</div>
+<div class="content">
+  <h2 style="text-align:center;">Retrieval Results</h2>
+  <img class="summary-img" src="./mind-animator/P10.png" style="width:100%;">
+</div>
+<div class="content">
+  <h2 style="text-align:center;">Interpretability Analysis</h2>
+  <p><strong>· Have we truly decoded motion information from fMRI? </strong> </p>
+  <br>
+  <img class="summary-img" src="./mind-animator/P11.png" style="width:100%;"> <br>
+  <p>Repeating the aforementioned procedure 100 times, the P-value of the shuffle test can be estimated as</p>
+  <img src="./mind-animator/gongshi.png" style="margin:0 auto"> 
+  <p>A lower P-value indicates a higher consistency between the reconstructed video frames and the ground truth before shuffling.  </p>
+  <img class="summary-img" src="./mind-animator/P12.png"> <br>
+  <p><strong>· Which brain regions are responsible for decoding different features, respectively?  </strong></p>
+  <img class="summary-img" src="./mind-animator/P13.png"> <br>
+  <img class="summary-img" src="./mind-animator/P14.png"> <br>
+  <P>· Low-level visual cortices (LVC) are predominantly responsible for processing low-level information of visual stimuli, such as orientation and contour.  In contrast, high-level visual cortices (HVC) are responsible for processing high-level semantic information of objects.  </P>
+  <P>· Both LVC and HVC contribute to the decoding of motion information, with significant weight attributed to V1 and MT. This observation is consistent with previous work, which validates the function of MT in visual motion processing.  </P>
+</div>
+<div class="content">
+  <h2 style="text-align:center;">More samples</h2>
+  <div class="container1">
+    <!-- Title Row for "Ground truth" and "Reconstructed" -->
+    <div class="row1">
+      <div class="column1">
+          <p class="column-title">Ground truth Reconstructed</p>
+      </div>
+      <div class="column1">
+          <p class="column-title">Ground truth Reconstructed</p>
+      </div>
+      <div class="column1">
+          <p class="column-title">Ground truth Reconstructed</p>
+      </div>
+      <div class="column1">
+          <p class="column-title">Ground truth Reconstructed</p>
+      </div>
+      <div class="column1">
+          <p class="column-title">Ground truth Reconstructed</p>
+      </div>
+  </div>
+    <!-- Row with 5 columns -->
+    <div class="row1">
+        <div class="column1">
+          <img class="custom-img" src="./mind-animator/P15/1-1.gif" alt="Image 1">
+        </div>
+        <div class="column1">
+          <img class="custom-img" src="./mind-animator/P15/1-2.gif" alt="Image 2">
+        </div>
+        <div class="column1">
+          <img class="custom-img" src="./mind-animator/P15/1-3.gif" alt="Image 3">
+        </div>
+        <div class="column1">
+          <img class="custom-img" src="./mind-animator/P15/1-4.gif" alt="Image 4">
+        </div>
+        <div class="column1">
+          <img class="custom-img" src="./mind-animator/P15/1-5.gif" alt="Image 5">
+        </div>
+    </div>
+    
+    <!-- Second row with 5 columns -->
+    <div class="row1">
+        <div class="column1">
+            <img class="custom-img" src="./mind-animator/P15/2-1.gif" alt="Image 6">
+        </div>
+        <div class="column1">
+            <img class="custom-img" src="./mind-animator/P15/2-2.gif" alt="Image 7">
+        </div>
+        <div class="column1">
+            <img class="custom-img" src="./mind-animator/P15/2-3.gif" alt="Image 8">
+        </div>
+        <div class="column1">
+            <img class="custom-img" src="./mind-animator/P15/2-4.gif" alt="Image 9">
+        </div>
+        <div class="column1">
+            <img class="custom-img" src="./mind-animator/P15/2-5.gif" alt="Image 10">
+        </div>
+    </div>
+
+    <!-- Third row with 5 columns -->
+    <div class="row1">
+        <div class="column1">
+            <img class="custom-img" src="./mind-animator/P15/3-1.gif" alt="Image 11">
+        </div>
+        <div class="column1">
+            <img class="custom-img" src="./mind-animator/P15/3-2.gif" alt="Image 12">
+        </div>
+        <div class="column1">
+            <img class="custom-img" src="./mind-animator/P15/3-3.gif" alt="Image 13">
+        </div>
+        <div class="column1">
+            <img class="custom-img" src="./mind-animator/P15/3-4.gif" alt="Image 14">
+        </div>
+        <div class="column1">
+            <img class="custom-img" src="./mind-animator/P15/3-5.gif" alt="Image 15">
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="content">
+  <h2 style="text-align:center;">Fail Cases</h2>
+  <p><strong>Case 1：</strong>Decoding errors in semantic, structural, or motion features due to low decoding accuracy.</p>
+    <div class="container1">
+      <!-- Title Row for "Ground truth" and "Reconstructed" -->
+      <div class="row1">
+        <div class="column1">
+            <p class="column-title">Ground truth Reconstructed</p>
+        </div>
+        <div class="column1">
+            <p class="column-title">Ground truth Reconstructed</p>
+        </div>
+        <div class="column1">
+            <p class="column-title">Ground truth Reconstructed</p>
+        </div>
+        <div class="column1">
+            <p class="column-title">Ground truth Reconstructed</p>
+        </div>
+    </div>
+      <!-- Row with 5 columns -->
+      <div class="row1">
+          <div class="column1">
+            <img class="custom-img" src="./mind-animator/P16/1-1.gif" alt="Image 1">
+          </div>
+          <div class="column1">
+            <img class="custom-img" src="./mind-animator/P16/1-2.gif" alt="Image 2">
+          </div>
+          <div class="column1">
+            <img class="custom-img" src="./mind-animator/P16/1-3.gif" alt="Image 3">
+          </div>
+          <div class="column1">
+            <img class="custom-img" src="./mind-animator/P16/1-4.gif" alt="Image 4">
+          </div>
+
+      </div>
+      <p><strong>Case 2：</strong>The data acquisition paradigm causes abrupt content transitions at the boundaries of video clips, which are uniformly segmented from the complete videos viewed by the subjects during data collection. </p>
+      <!-- Second row with 5 columns -->
+      <div class="row1">
+        <div class="column1">
+            <p class="column-title">Ground truth Reconstructed</p>
+        </div>
+        <div class="column1">
+            <p class="column-title">Ground truth Reconstructed</p>
+        </div>
+        <div class="column1">
+            <p class="column-title">Ground truth Reconstructed</p>
+        </div>
+        <div class="column1">
+            <p class="column-title">Ground truth Reconstructed</p>
+        </div>
+    </div>
+      <div class="row1">
+          <div class="column1">
+              <img class="custom-img" src="./mind-animator/P16/2-1.gif" alt="Image 6">
+          </div>
+          <div class="column1">
+              <img class="custom-img" src="./mind-animator/P16/2-2.gif" alt="Image 7">
+          </div>
+          <div class="column1">
+              <img class="custom-img" src="./mind-animator/P16/2-3.gif" alt="Image 8">
+          </div>
+          <div class="column1">
+              <img class="custom-img" src="./mind-animator/P16/2-4.gif" alt="Image 9">
+          </div>
+      </div>
+ 
+  <br>
+</div>
+</body>
+</html>
